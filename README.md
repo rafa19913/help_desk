@@ -13,7 +13,7 @@ Contraseña: admin
 Usuario: tecnico
 Contraseña: admin
 
--Cliente
+- Cliente
 Usuario: cliente
 Contraseña: admin
 
