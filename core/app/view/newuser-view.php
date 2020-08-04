@@ -1,10 +1,9 @@
+<?php 
+$rol = RolData::getAll();
+    ?>
+
 <div class="row">
 	<div class="col-md-12">
-
-    <div class="btn-group pull-right">
-  <a href="index.php?view=helpnewusuario" class="btn btn-default"><i class='fa fa-question'></i> </a>
-</div>
-
 
 	<h1>Agregar Usuario</h1>
 	<br>
@@ -44,6 +43,18 @@
   </div>
 
   <div class="form-group">
+    <label for="inputEmail1" class="col-lg-2 control-label">Tipo de usuario*</label>
+    <div class="col-md-6">
+    <select name="rol_id" accesskey="5" required class="form-control">
+    <option value="">-- Ninguna --</option>
+    <?php foreach($rol as $roles):?>
+      <option value="<?php echo $roles->id;?>"><?php echo $roles->name;?></option>
+    <?php endforeach;?>
+      </select>    </div>
+  </div>
+
+<!--
+  <div class="form-group">
     <label for="inputEmail1" class="col-lg-2 control-label">Es administrador</label>
     <div class="col-md-6">
 <div class="checkbox">
@@ -53,6 +64,8 @@
   </div>
     </div>
   </div>
+-->
+
 
   <div class="form-group">
     <div class="col-lg-offset-2 col-lg-10">

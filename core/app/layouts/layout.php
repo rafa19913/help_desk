@@ -115,8 +115,8 @@ if(Session::getUID()!=""):
 
               <li><a href="./index.php?view=home"><i class='fa fa-home'></i> <span>Inicio</span></a></li>
 
-              <li><a href="./index.php?view=solicitudes"><i class='fa fa-home'></i> <span>Solicitudes</span></a></li>
-
+             <!-- <li><a href="./index.php?view=solicitudes"><i class='fa fa-home'></i> <span>Solicitudes</span></a></li>
+-->
               
               <li class="treeview">
               <a href="#"><i class='fa fa-cog'></i> <span>Configuración</span> <i class="fa fa-angle-left pull-right"></i></a>
@@ -133,7 +133,9 @@ if(Session::getUID()!=""):
 
             <?php if($u->id_rol==3):?>
 
-              <li><a href="./index.php?view=home"><i class='fa fa-home'></i> <span>Inicio Cliente</span></a></li>
+              <li><a href="./index.php?view=home"><i class='fa fa-home'></i> <span>Inicio</span></a></li>
+
+              <li><a href="./index.php?view=csolicitudes"><i class='fa fa-home'></i> <span>Solicitudes</span></a></li>
             
             <?php endif;?>
 

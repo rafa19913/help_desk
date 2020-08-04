@@ -13,7 +13,7 @@ if(Session::getUID()!=""):
        
 
 
-<?php if($u->id_rol):?>
+<?php if($u->id_rol==1):?>
        
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->

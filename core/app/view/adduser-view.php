@@ -49,9 +49,15 @@ if(count($_POST)>0){
 	$user->lastname = $_POST["lastname"];
 	$user->username = $_POST["username"];
 	$user->email = $_POST["email"];
-	$user->is_admin=$is_admin;
 	$user->password = sha1(md5($_POST["password"]));
+	$rol_id="NULL";
+	if($_POST["rol_id"]!=""){ $rol_id=$_POST["rol_id"];}
+
+	$user->rol_id=$rol_id;
+
+	
 	$user->add();
+
 
 print "<script>window.location='index.php?view=users';</script>";
 
