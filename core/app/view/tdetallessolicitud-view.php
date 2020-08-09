@@ -3,9 +3,9 @@ $asesor = UserData::getAllAsesor();
 ?>
 <div class="row">
 	<div class="col-md-12">
-	<h1>Asignar asesor</h1>
+	<h1>Editar asesor</h1>
 	<br>
-		<form class="form-horizontal" method="post" id="addproduct" action="index.php?view=updateasesor" role="form">
+		<form class="form-horizontal" method="post" id="addproduct" action="index.php?view=adddetalles" role="form">
 
   <div class="form-group">
     <label for="inputEmail1" class="col-lg-2 control-label">Nombre</label>
@@ -43,14 +43,10 @@ $asesor = UserData::getAllAsesor();
   </div>
 
   <div class="form-group">
-    <label for="inputEmail1" class="col-lg-2 control-label">Asesor*</label>
+    <label for="inputEmail1" class="col-lg-2 control-label">Detalles del asesor</label>
     <div class="col-md-6">
-    <select name="tipo_problema" accesskey="5" required class="form-control">
-    <option value="">Sin asignar</option>
-    <?php foreach($asesor as $asesor):?>
-      <option value="<?php echo $asesor->id;?>"><?php echo $asesor->nombre; echo " "; echo $asesor->apellidos?></option>
-    <?php endforeach;?>
-      </select>    </div>
+    <textarea name="detalles" rows="4" cols="20" accesskey="6" class="form-control" id="detalles" placeholder="Detalles definidos por el asesor" ><?php echo $peticion->detalles_asesor;?></textarea>
+    </div>
   </div>
   
 
@@ -59,7 +55,7 @@ $asesor = UserData::getAllAsesor();
     <div class="col-lg-offset-2 col-lg-10">
     <input type="hidden" name="user_id" value="<?php echo $peticion->id;?>">
       <button type="submit" class="btn btn-primary">Confirmar</button>
-      <button name="BtnCancelar" onclick=this.form.action="index.php?view=asolicitudespendientes" formnovalidate class="btn btn-danger">Cancelar</button>
+      <button name="BtnCancelar" onclick=this.form.action="index.php?view=tsolicitudes" formnovalidate class="btn btn-danger">Cancelar</button>
     </div>
   </div>
 </form>

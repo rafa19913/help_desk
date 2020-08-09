@@ -56,12 +56,31 @@ class UserData {
 
 	}
 
-
+/*
 	public static function getAll(){
-		$sql = "select * from ".self::$tablename." where id!=1";
+		$sql = "select usuario.id,usuario.nombre, usuario.apellidos, usuario.username, usuario.email, rol_usuario.rol ".self::$tablename." inner join rol_usuario on usuario.id_rol=rol_usuario.id_rol where id!=1";
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new UserData());
 	}
+
+*/
+public static function getAll(){
+	$sql = "select usuario.id, usuario.nombre, usuario.apellidos, usuario.username, usuario.email, rol_usuario.rol from ".self::$tablename." inner join rol_usuario on usuario.id_rol=rol_usuario.id_rol where id!=1 order by id";
+	$query = Executor::doit($sql);
+	$array = array();
+	$cnt = 0;
+	while($r = $query[0]->fetch_array()){
+		$array[$cnt] = new UserData();
+		$array[$cnt]->id = $r['id'];
+		$array[$cnt]->nombre = $r['nombre'];
+		$array[$cnt]->apellidos = $r['apellidos'];
+		$array[$cnt]->username = $r['username'];
+		$array[$cnt]->email = $r['email'];
+		$array[$cnt]->rol = $r['rol'];
+		$cnt++;
+	}
+	return $array;
+}
 
 	public static function getAllAsesor(){
 		$sql = "select * from ".self::$tablename." where id_rol=2";

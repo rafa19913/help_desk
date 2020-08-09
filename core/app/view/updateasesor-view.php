@@ -8,9 +8,7 @@ if(count($_POST)>0){
 	if($_POST["tipo_problema"]!=""){ $asesor_id=$_POST["tipo_problema"];}
 
 	$peticion_asesor->id_asesor=$asesor_id;
-	
-	echo $peticion_asesor->id_asesor;
-	
+		
 	$peticion_asesor->updateAsesor();
 
 	print "<script>window.location='index.php?view=asolicitudesasignadas';</script>";

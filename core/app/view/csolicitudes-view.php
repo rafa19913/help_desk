@@ -36,6 +36,7 @@ if(Session::getUID()!=""){
 			<th>Descripción</th>
 			<th>Fecha</th>
       <th>Asesor</th>
+      <th>Estado</th>
 			<th></th>
 			</thead>
         <?php
@@ -50,10 +51,11 @@ if(Session::getUID()!=""){
         <td><?php echo $solicitudes->descripcion; ?></td>
         <td><?php echo $solicitudes->fecha; ?></td>
         <td><?php echo $solicitudes->nombre; echo " "; echo $solicitudes->apellidos; ?></td>
+        <td><?php echo $solicitudes->estado; ?></td>
 
         <td style="width:70px;">
 
-        <a href="index.php?view=detallesolicitud&id=<?php echo $solicitudes->id;?>" onclick="return confirmar()" class="btn btn-danger btn-xs">Eliminar</a></td>
+        <a href="index.php?view=cdetallessolicitud&id=<?php echo $solicitudes->id;?>" class="btn btn-success btn-xs">Detalles</a></td>
 
 
 

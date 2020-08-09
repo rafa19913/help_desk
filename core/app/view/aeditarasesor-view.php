@@ -3,7 +3,7 @@ $asesor = UserData::getAllAsesor();
 ?>
 <div class="row">
 	<div class="col-md-12">
-	<h1>Asignar asesor</h1>
+	<h1>Editar asesor</h1>
 	<br>
 		<form class="form-horizontal" method="post" id="addproduct" action="index.php?view=updateasesor" role="form">
 
@@ -59,7 +59,7 @@ $asesor = UserData::getAllAsesor();
     <div class="col-lg-offset-2 col-lg-10">
     <input type="hidden" name="user_id" value="<?php echo $peticion->id;?>">
       <button type="submit" class="btn btn-primary">Confirmar</button>
-      <button name="BtnCancelar" onclick=this.form.action="index.php?view=asolicitudespendientes" formnovalidate class="btn btn-danger">Cancelar</button>
+      <button name="BtnCancelar" onclick=this.form.action="index.php?view=asolicitudesasignadas" formnovalidate class="btn btn-danger">Cancelar</button>
     </div>
   </div>
 </form>

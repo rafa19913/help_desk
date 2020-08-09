@@ -35,8 +35,7 @@ if(Session::getUID()!=""){
 			<th>Problema</th>
 			<th>Tipo</th>
 			<th>Descripción</th>
-			<th>Fecha</th>
-      <th>Asesor</th>
+      <th>Fecha</th>
 			<th></th>
 			</thead>
         <?php
@@ -50,7 +49,7 @@ if(Session::getUID()!=""){
         <td><?php echo $solicitudes->tipo; ?></td>
         <td><?php echo $solicitudes->descripcion; ?></td>
         <td><?php echo $solicitudes->fecha; ?></td>
-        <td>Sin asignar</td>
+        
 
         <td style="width:70px;">
 

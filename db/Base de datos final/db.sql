@@ -2,6 +2,14 @@ create database helpdesk;
 use helpdesk;
 set sql_mode='';
 
+create table estado_solicitud(
+id_estadosolicitud int not null auto_increment primary key,
+estado varchar(15)
+);
+
+insert into estado_solicitud(estado)
+value ("Pendiente"),("En proceso"),("Finalizado");
+
 create table rol_usuario(
 id_rol int not null auto_increment primary key,
 rol varchar(20)
@@ -9,9 +17,8 @@ rol varchar(20)
 
 insert into rol_usuario(rol)
 value ("Administrador"),
-("Tecnico"),
+("Asesor"),
 ("Cliente");
-
 
 create table usuario(
 id int not null auto_increment primary key,
@@ -32,7 +39,7 @@ value ("Sin","asignar",1,1,NOW());
 
 insert into usuario(nombre,apellidos,email,password,is_active,id_rol,creado)
 value ("Administrador","","admin","90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad",1,1,NOW());
-
+/*
 insert into usuario(nombre,apellidos,email,password,is_active,id_rol,creado)
 value ("tecnico","","tecnico","90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad",1,2,NOW());
 
@@ -44,15 +51,14 @@ value ("Osiel","De La Fuente","osiel@gmail.com","osiel","90b9aa7e25f80cf4f64e990
 
 insert into usuario(nombre,apellidos,email,username,password,is_active,id_rol,creado)
 value ("Rafael","Perez","rafael@gmail.com","rafael","90b9aa7e25f80cf4f64e990b78a9fc5ebd6cecad",1,3,NOW());
-
+*/
 create table tipo_problema(
 id_tipo_problema int not null auto_increment primary key,
 problema varchar(35)
 );
 
 insert into tipo_problema(problema)
-value ("Software"), ("Hardware"),("No tengo idea");
-
+value ("Software"), ("Hardware"),("Otro");
 
 create table peticion(
 id_peticion int not null auto_increment primary key,
@@ -62,19 +68,38 @@ descripcion text,
 id_cliente int,
 id_asesor int,
 fecha_creacion timestamp,
+id_estadosolicitud int,
+detalles_asesor text,
 
 foreign key (id_tipo_problema) references tipo_problema(id_tipo_problema),
 foreign key (id_cliente) references usuario(id),
-foreign key (id_asesor) references usuario(id)
+foreign key (id_asesor) references usuario(id),
+foreign key (id_estadosolicitud) references estado_solicitud(id_estadosolicitud)
 );
+/*
+insert into peticion(problema,id_tipo_problema,descripcion,id_cliente,fecha_creacion,id_asesor,id_estadosolicitud)
+value ("Pc no enciende",2,"La computadora esta bien muerta",4,'2020-08-04 22:32:34',1,1),
+("Pc trabada",1,"No hace nada la mugre",4,'2020-08-04 22:45:01',1,1),
+("La computadora esta muy lenta",1,"Tarda mucho en arrancar esta mugre",4,'2020-08-04 22:47:41',1,1),
+("Chrome no abre",1,"El navegador google chrome no se ejecuta",5,'2020-08-04 22:48:27',1,1),
+("Pc hace ruidos extraños",3,"La computadora la enciendo y comienza a pillar algo dentro de ella",5,'2020-08-04 22:49:47',1,1),
+("Computadora se apaga",3,"Estoy trabajando de manera normal con el equipo y de la nada se apaga",6,'2020-08-04 22:50:54',1,1);
+*/
 
-insert into peticion(problema,id_tipo_problema,descripcion,id_cliente,fecha_creacion,id_asesor)
-value ("Pc no enciende",2,"La computadora esta bien muerta",4,'2020-08-04 22:32:34',1),
-("Pc trabada",1,"No hace nada la mugre",4,'2020-08-04 22:45:01',1),
-("La computadora esta muy lenta",1,"Tarda mucho en arrancar esta mugre",4,'2020-08-04 22:47:41',1),
-("Chrome no abre",1,"El navegador google chrome no se ejecuta",5,'2020-08-04 22:48:27',1),
-("Pc hace ruidos extraños",3,"La computadora la enciendo y comienza a pillar algo dentro de ella",5,'2020-08-04 22:49:47',1),
-("Computadora se apaga",3,"Estoy trabajando de manera normal con el equipo y de la nada se apaga",6,'2020-08-04 22:50:54',1);
+/*
+select peticion.id_peticion, peticion.problema, tipo_problema.problema as tipo, peticion.descripcion, peticion.fecha_creacion, usuario.nombre as nombre, usuario.apellidos as apellidos, estado_solicitud.estado as estado
+from peticion
+inner join tipo_problema on peticion.id_tipo_problema=tipo_problema.id_tipo_problema
+inner join usuario on peticion.id_asesor=usuario.id
+inner join estado_solicitud on peticion.id_estadosolicitud=estado_solicitud.id_estadosolicitud
+where id_cliente=4 order by id_peticion;
+
+
+
+select usuario.id, usuario.nombre, usuario.apellidos, usuario.username, usuario.email, rol_usuario.rol
+from usuario
+inner join rol_usuario on usuario.id_rol=rol_usuario.id_rol
+where id!=1;
 
 
 select peticion.id_peticion, peticion.problema, tipo_problema.problema as tipo, peticion.descripcion, peticion.fecha_creacion,
@@ -97,7 +122,7 @@ inner join usuario as usuarioB on peticion.id_asesor=usuarioB.id
 where id_peticion=5;
 
 
-/*
+
 select peticion.id_peticion, peticion.problema, tipo_problema.problema as problema, peticion.descripcion, peticion.fecha_creacion
 from peticion
 inner join tipo_problema on peticion.id_tipo_problema=tipo_problema.id_tipo_problema;

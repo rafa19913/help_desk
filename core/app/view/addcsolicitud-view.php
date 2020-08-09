@@ -12,6 +12,7 @@ $peticion->problema = $_POST["problema"];
 $peticion->tipo_problema = $_POST["tipo_problema"];
 $peticion->descripcion = $_POST["description"];
 $peticion->id_asesor = 1;
+$peticion->id_estado = 1;
 
 $peticion->add();
 

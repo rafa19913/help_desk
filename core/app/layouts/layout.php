@@ -130,8 +130,9 @@ if(Session::getUID()!=""):
             
             <?php if($u->id_rol==2):?>
 
-              <li><a href="./index.php?view=home"><i class='fa fa-home'></i> <span>Inicio Tecnico</span></a></li>
-            
+              <li><a href="./index.php?view=home"><i class='fa fa-home'></i> <span>Inicio</span></a></li>
+              
+              <li><a href="./index.php?view=tsolicitudes"><i class='fa fa-list-ul'></i> <span>Solicitudes</span></a></li>
             <?php endif;?>
 
             <?php if($u->id_rol==3):?>

@@ -88,6 +88,22 @@ if(Session::getUID()!=""):
 
 <?php if($u->id_rol==2):?>
        
+	<div class="col-lg-3 col-xs-6">
+		 <!-- small box -->
+		 <div class="small-box bg-blue">
+		   <div class="inner">
+			 <h3><?php echo count(PeticionData::getAllAsesor($u->id));?></h3>
+
+
+			 <p>Solicitudes</p>
+		   </div>
+		   <div class="icon">
+			 <i class="fa fa-list-ul"></i>
+		   </div>
+		   <a href="./?view=tsolicitudes" class="small-box-footer">Ver mas <i class="fa fa-arrow-circle-right"></i></a>
+		 </div>
+	   </div>
+	   <!-- ./col -->
 	
 
 <?php endif;?>

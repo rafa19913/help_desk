@@ -39,8 +39,9 @@ if(Session::getUID()!=""){
 		?>
 		<?php
 
+
 		$users = UserData::getAll(); 
-		if(count($users)>0){
+			if(count($users)>0){
 			// si hay usuarios
 			?>
 			<table class="table table-bordered table-hover">
@@ -48,8 +49,7 @@ if(Session::getUID()!=""){
 			<th>Nombre completo</th>
 			<th>Nombre de usuario</th>
 			<th>Email</th>
-			<th>Activo</th>
-			<th>Admin</th>
+			<th>Tipo de usuario</th>
 			<th></th>
 			</thead>
 			<?php
@@ -59,15 +59,10 @@ if(Session::getUID()!=""){
 				<td><?php echo $user->nombre." ".$user->apellidos; ?></td>
 				<td><?php echo $user->username; ?></td>
 				<td><?php echo $user->email; ?></td>
+				<td><?php echo $user->rol; ?></td>
+				
 				<td>
-					<?php if($user->is_active):?>
-						<i class="glyphicon glyphicon-ok"></i>
-					<?php endif; ?>
-				</td>
-				<td>
-					<?php if($user->id_rol==1):?>
-						<i class="glyphicon glyphicon-ok"></i>
-					<?php endif; ?>
+					
 				</td>
 
 				<?php if($u->id_rol==1):?>
