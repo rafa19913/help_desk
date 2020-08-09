@@ -14,6 +14,57 @@ if(Session::getUID()!=""):
 
 
 <?php if($u->id_rol==1):?>
+
+	<div class="col-lg-3 col-xs-6">
+		 <!-- small box -->
+		 <div class="small-box bg-blue">
+		   <div class="inner">
+			 <h3><?php echo count(PeticionData::getAllPendientes());?></h3>
+
+
+			 <p>Solicitudes pendientes</p>
+		   </div>
+		   <div class="icon">
+			 <i class="fa fa-exclamation"></i>
+		   </div>
+		   <a href="./?view=asolicitudespendientes" class="small-box-footer">Ver mas <i class="fa fa-arrow-circle-right"></i></a>
+		 </div>
+	   </div>
+	   <!-- ./col -->
+
+	   <div class="col-lg-3 col-xs-6">
+		 <!-- small box -->
+		 <div class="small-box bg-green">
+		   <div class="inner">
+			 <h3><?php echo count(PeticionData::getAllAsignadas());?></h3>
+
+
+			 <p>Solicitudes asignadas</p>
+		   </div>
+		   <div class="icon">
+			 <i class="fa fa-check"></i>
+		   </div>
+		   <a href="./?view=asolicitudesasignadas" class="small-box-footer">Ver mas <i class="fa fa-arrow-circle-right"></i></a>
+		 </div>
+	   </div>
+	   <!-- ./col -->
+
+	   <div class="col-lg-3 col-xs-6">
+		 <!-- small box -->
+		 <div class="small-box bg-orange">
+		   <div class="inner">
+		   <h3><?php echo count(ProblemaData::getAll());?></h3>
+
+
+			 <p>Tipos de problemas</p>
+		   </div>
+		   <div class="icon">
+			 <i class="fa fa-warning"></i>
+		   </div>
+		   <a href="./?view=tipoproblema" class="small-box-footer">Ver mas <i class="fa fa-arrow-circle-right"></i></a>
+		 </div>
+	   </div>
+	   <!-- ./col -->
        
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->
@@ -31,6 +82,34 @@ if(Session::getUID()!=""):
           </div>
         </div>
         <!-- ./col -->
+
+<?php endif;?>
+
+
+<?php if($u->id_rol==2):?>
+       
+	
+
+<?php endif;?>
+
+<?php if($u->id_rol==3):?>
+       
+	   <div class="col-lg-3 col-xs-6">
+		 <!-- small box -->
+		 <div class="small-box bg-blue">
+		   <div class="inner">
+			 <h3><?php echo count(PeticionData::getAll($u->id));?></h3>
+
+
+			 <p>Solicitudes</p>
+		   </div>
+		   <div class="icon">
+			 <i class="fa fa-list-ul"></i>
+		   </div>
+		   <a href="./?view=csolicitudes" class="small-box-footer">Ver mas <i class="fa fa-arrow-circle-right"></i></a>
+		 </div>
+	   </div>
+	   <!-- ./col -->
 
 <?php endif;?>
         

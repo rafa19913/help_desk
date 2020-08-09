@@ -58,7 +58,13 @@ class UserData {
 
 
 	public static function getAll(){
-		$sql = "select * from ".self::$tablename;
+		$sql = "select * from ".self::$tablename." where id!=1";
+		$query = Executor::doit($sql);
+		return Model::many($query[0],new UserData());
+	}
+
+	public static function getAllAsesor(){
+		$sql = "select * from ".self::$tablename." where id_rol=2";
 		$query = Executor::doit($sql);
 		return Model::many($query[0],new UserData());
 	}

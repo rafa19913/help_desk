@@ -115,13 +115,16 @@ if(Session::getUID()!=""):
 
               <li><a href="./index.php?view=home"><i class='fa fa-home'></i> <span>Inicio</span></a></li>
 
-             <!-- <li><a href="./index.php?view=solicitudes"><i class='fa fa-home'></i> <span>Solicitudes</span></a></li>
--->
+              <li><a href="./index.php?view=asolicitudespendientes"><i class='fa fa-exclamation'></i> <span>Solicitudes pendientes</span></a></li>
+
+              <li><a href="./index.php?view=asolicitudesasignadas"><i class='fa fa-check'></i> <span>Solicitudes asignadas</span></a></li>
               
               <li class="treeview">
               <a href="#"><i class='fa fa-cog'></i> <span>Configuración</span> <i class="fa fa-angle-left pull-right"></i></a>
               <ul class="treeview-menu">
-                <li><a href="./?view=users">Usuarios</a></li>
+
+              <li><a href="./index.php?view=tipoproblema"><i class='fa fa-warning'></i> <span>Tipos de problemas</span></a></li>
+              <li><a href="./index.php?view=users"><i class='fa fa-user'></i> <span>Usuarios</span></a></li>
 
             <?php endif;?>
             
@@ -135,7 +138,7 @@ if(Session::getUID()!=""):
 
               <li><a href="./index.php?view=home"><i class='fa fa-home'></i> <span>Inicio</span></a></li>
 
-              <li><a href="./index.php?view=csolicitudes"><i class='fa fa-home'></i> <span>Solicitudes</span></a></li>
+              <li><a href="./index.php?view=csolicitudes"><i class='fa fa-list-ul'></i> <span>Solicitudes</span></a></li>
             
             <?php endif;?>
 

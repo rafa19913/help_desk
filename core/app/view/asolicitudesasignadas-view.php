@@ -12,9 +12,10 @@ function confirmar()
 </script>
 
 
-
+<!--
 <a href="index.php?view=newsolicitud" class="btn btn-default pull-right"><i class='glyphicon glyphicon-user'></i> Nueva solicitud</a>
-		<h1>Solicitudes</h1>
+	-->	
+        <h1>Solicitudes asignadas</h1>
 <br>
 
 <?php
@@ -24,7 +25,7 @@ if(Session::getUID()!=""){
   $u = UserData::getById(Session::getUID()); //Llama el id del usuario que tiene la sesion activa
 }
 
-    $solicitud = PeticionData::getAll($u->id); //Entra como parametro a la consulta el id del usuario activo
+    $solicitud = PeticionData::getAllAsignadas(); //Entra como parametro a la consulta el id del usuario activo
     if(count($solicitud)>0){
         // si hay usuarios
 ?>
@@ -52,9 +53,9 @@ if(Session::getUID()!=""){
         <td><?php echo $solicitudes->nombre; echo " "; echo $solicitudes->apellidos; ?></td>
 
         <td style="width:70px;">
-
+<!--
         <a href="index.php?view=detallesolicitud&id=<?php echo $solicitudes->id;?>" onclick="return confirmar()" class="btn btn-danger btn-xs">Eliminar</a></td>
-
+-->
 
 
 <?php

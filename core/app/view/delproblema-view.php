@@ -1,6 +1,6 @@
 <?php
 
-$category = Categorydata::getById($_GET["id"]);
+$problema = ProblemaData::getById($_GET["id"]);
 
 
 /* 
@@ -12,8 +12,8 @@ foreach ($products as $product) {
 }
 */
 
-$category->del();
-Core::redir("./index.php?view=categories");
+$problema->del();
+Core::redir("./index.php?view=tipoproblema");
 
 
 ?>
